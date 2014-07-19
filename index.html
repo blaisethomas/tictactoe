@@ -11,17 +11,21 @@
             <div class="main-container"  >
                 
                 <!----------COLUMNS---------->
-                <div class="column" ng-repeat="row in board">
+                <div class="column"
+                ng-repeat="column in board">
                     
                     <!----------BOXES---------->
-                    <div class="{{ box.x }}_{{ box.y}}" ng-click="clicked(box.x,box.y); myVar='player2'; count()" ng-repeat="box in row"  > 
-                    <!-- {{box.name}}-->
-                         
-                        <div class="box" ng-class="myVar" >
-                            {{ box.x }}, {{ box.y }}<!--  {{player2}}, {{player1}} -->
+                    <div id="{{box.x}}_{{box.y}}" ng-repeat="box in column" ng-class="{ box: true, p1: box.p1owns, p2: box.p2owns}"
+                    ng-click="cellClick(box) ; clickingBox(whichArray(box), box.x, box.y)"
+                    >
 
-<!-- <br>
-<span class="base-class" ng-class="myVar">Sample Text</span> -->
+                        <div>
+                        <!-- ng-class=""
+                        ng-click="cellClick(oneCell)"
+                         ng-class="{ xcell : oneCell.owner = 'X', ycell : oneCell.owner = 'Y' }"
+                        ng-click="cellClick(oneCell)"
+                         -->
+                        {{ box.x }}, {{ box.y }}
 
                         </div>
                     </div>
