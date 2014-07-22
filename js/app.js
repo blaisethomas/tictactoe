@@ -4,13 +4,13 @@ var tttApp = angular.module('TicTacToe', []);
 tttApp.controller('tttController',function($scope){
 
 /////////set the board /////////////
-$scope.sizeBox = 13;
+$scope.sizeBox = 3;
 $scope.newBoard = function(size) {
 	$scope.board = [];
 	for (var i=0; i<size; ++i) {
-		var colset = [];
+		var boxSet = [];
 		for (var j=0; j<size; ++j) {
-			colset.push({
+			boxSet.push({
 				x:(j+1),
 				y:(i+1),
 				mark:null,
@@ -19,7 +19,7 @@ $scope.newBoard = function(size) {
 				p2owns:false
 			});	
 		}
-		$scope.board.push(colset)
+		$scope.board.push(boxSet)
 	}	
 };
 $scope.newBoard($scope.sizeBox);
@@ -36,20 +36,49 @@ $scope.cellClick = function(box){
 			box.p1owns = true;
 			box.mark = 'X';
 			$scope.playCounter++;
-			// $scope.player1 = 'p1';  
+			playerOne.push({
+				x:box.x,
+				y:box.y 
+			})
+			// $scope.player1 = 'p1'; 
+			//push to new array or object called playerOne 
 		} else {
 			//alert("player2");
 			box.active = true;
 			box.p2owns = true;
 			box.mark = 'Y';
 			$scope.playCounter++;
-			$scope.player2 = 'p2';
+			//$scope.player2 = 'p2';
 		}
 	} 
 	else {
 		alert('taken')
 	}	
 }
+
+playerOne = [] ;
+
+ 
+
+
+
+
+
+
+//////////////GAME LOGIC\\\\\\\\\\\\\\\\\\
+
+
+// $scope.winFind = function(box) {
+
+// 	if (box.p1owns != true){ 
+// 		//alert("p2")
+// 	}
+// 	else if (box.p2owns != true) {
+// 		//alert("p1")
+// 	}
+// }
+
+
 // $scope.clicked = function(x,y){
 // alert(x + " , " + y);
 // }
@@ -60,11 +89,7 @@ $scope.cellClick = function(box){
 }); //////////////////////////////END OF SCOPE	
 
 
-//TODO
-// define players
 
-// ng-click swaps players
-// playerSelect();
 
 
 

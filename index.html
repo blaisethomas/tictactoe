@@ -15,19 +15,14 @@
                 ng-repeat="column in board">
                     
                     <!----------BOXES---------->
-                    <div id="{{box.x}}_{{box.y}}" ng-repeat="box in column" ng-class="{ box: true, p1: box.p1owns, p2: box.p2owns}"
-                    ng-click="cellClick(box) ; clickingBox(whichArray(box), box.x, box.y)"
-                    >
-
+                    <div ng-repeat="box in column" 
+                    ng-click="cellClick(box); winFind(box)"
+                    ng-class="{box: true, p1: box.p1owns, p2: box.p2owns}">
+                        
                         <div>
-                        <!-- ng-class=""
-                        ng-click="cellClick(oneCell)"
-                         ng-class="{ xcell : oneCell.owner = 'X', ycell : oneCell.owner = 'Y' }"
-                        ng-click="cellClick(oneCell)"
-                         -->
                         {{ box.x }}, {{ box.y }}
-
                         </div>
+                        
                     </div>
                 </div>
             </div>
