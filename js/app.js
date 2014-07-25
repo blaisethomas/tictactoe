@@ -36,7 +36,7 @@ $scope.cellClick = function(box){
 			box.p1owns = true;
 			//box.mark = 'X';
 			$scope.playCounter++;
-			playerOne.push([box.x]);
+			p1moves.push(box.x);
 			// $scope.player1 = 'p1'; 
 			//push to new array or object called playerOne 
 		} else {
@@ -45,7 +45,7 @@ $scope.cellClick = function(box){
 			box.p2owns = true;
 			//box.mark = 'Y';
 			$scope.playCounter++;
-			playerTwo.push([box.x]);
+			p2moves.push(box.x);
 			//$scope.player2 = 'p2';
 		}
 
@@ -54,18 +54,39 @@ $scope.cellClick = function(box){
 	}
 }
 
+p1moves = [];
+p2moves = [];
+
+winCombo1 = [[1,1],[1,2],[1,3]]
+winCombo2 = [[2,1],[2,2],[2,3]]
+winCombo3 = [[3,1],[3,2],[3,3]]
+winCombo4 = [[1,1],[2,1],[3,1]]
+winCombo5 = [[1,2],[2,2],[3,2]]
+winCombo6 = [[1,3],[2,3],[3,3]]
+winCombo7 = [[1,1],[2,2],[3,3]]
+winCombo8 = [[1,3],[2,2],[3,1]]
+
+
 $scope.winCheck = function () {
-	if ($scope.playCounter > 8) {
-	var results = playerOne.map(function(arrayCell){
-		console.log(playerOne + "\n" + playerTwo);
-		});
-	} else {
-		console.log("playing")
+	for (k=0; k<p1moves.length; k++) {
+		console.log("still looping");
+		if (p1moves[k].toString() == winCombo1[0].toString() && p1moves[k+1].toString() == winCombo1[1].toString() && p1moves[k+2].toString() == winCombo1[2].toString()) {
+		// if (p1moves.toString() == winCombo1.toString()) {
+			alert("player one wins!");
+		}
 	}
+
+	console.log('p1moves: ' + p1moves);
+	console.log('wincombo1' + winCombo1);
+	console.log(p1moves.toString() == winCombo1.toString());
+
+
+
+	
 }
 
-playerOne = [];
-playerTwo = [];
+
+
 
 // if (arrayCell == "x: 2, y: 2") {
 // 			alert("winner!");
@@ -117,20 +138,6 @@ playerTwo = [];
 //////////////GAME LOGIC\\\\\\\\\\\\\\\\\\
 
 
-// $scope.winFind = function(box) {
-
-// 	if (box.p1owns != true){ 
-// 		//alert("p2")
-// 	}
-// 	else if (box.p2owns != true) {
-// 		//alert("p1")
-// 	}
-// }
-
-
-// $scope.clicked = function(x,y){
-// alert(x + " , " + y);
-// }
 
 
 
